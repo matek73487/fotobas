@@ -3,26 +3,58 @@
 <head>
   <meta charset="UTF-8">
   <title>Starta Fotobås</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
       font-family: sans-serif;
-      text-align: center;
-      margin-top: 100px;
+      background-color: #f8f8f8;
     }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 22px;
+      margin-bottom: 50px;
+      max-width: 600px;
+    }
+
     button {
-      font-size: 48px;
-      padding: 40px 80px;
+      font-size: 36px;
+      padding: 30px 60px;
       border-radius: 20px;
       border: none;
       background-color: #4CAF50;
       color: white;
       cursor: pointer;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+
+    button:active {
+      background-color: #388E3C;
     }
   </style>
 </head>
 <body>
-  <h1>Välkommen till Fotobåset!</h1>
-<h2>När du trycker på knappen kommer kameran ta två bilder med några sekunders mellanrum. Därefter kommer bilderna visas och du trycker på KLAR! Vill du ta om bilderna, tryck ändå på KLAR och kör om igen.</h2>
-  <button onclick="window.location.href='shortcuts://run-shortcut?name=FOTOBÅS';">Ta foton</button>
+  <div class="container">
+    <h1>Välkommen till Fotobåset!</h1>
+    <h2>När du trycker på knappen kommer kameran ta två bilder med några sekunders mellanrum. Därefter kommer bilderna visas och du trycker på KLAR! Vill du ta om bilderna, tryck ändå på KLAR och kör om igen.</h2>
+    <button onclick="window.location.href='shortcuts://run-shortcut?name=FOTOBÅS';">📸 Ta foton</button>
+  </div>
 </body>
 </html>
