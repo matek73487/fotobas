@@ -29,7 +29,7 @@
 </head>
 <body>
   <div id="message">Tryck på knappen för att ta bilder</div>
-<div id="message">Tryck på knappen för att ta bilder</div>
+<div id="message">Instruktion</div>
   <button id="startButton">Ta bilder 📷</button>
 
   <script>
@@ -39,8 +39,21 @@
     startButton.addEventListener("click", () => {
       message.textContent = "📸 Bilderna tas nu...";
       
-      // Här ska du lägga in din genvägs-URL nedan:
-      window.location.href = "shortcuts://run-shortcut?name=Fotobås";
+      // Spara att vi har startat fotobåset
+      sessionStorage.setItem("fotobasRunning", "true");
+
+      // Vänta lite innan vi öppnar genvägen så att texten hinner synas
+      setTimeout(() => {
+        window.location.href = "shortcuts://run-shortcut?name=Fotobås";
+      }, 800);
+    });
+
+    // Om vi kommer tillbaka från genvägen, ladda om sidan till startläge
+    window.addEventListener("focus", () => {
+      if (sessionStorage.getItem("fotobasRunning") === "true") {
+        sessionStorage.removeItem("fotobasRunning");
+        location.reload();
+      }
     });
   </script>
 </body>
