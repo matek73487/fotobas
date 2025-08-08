@@ -29,7 +29,7 @@
 </head>
 <body>
   <div id="message">Tryck på knappen för att ta bilder</div>
-<div id="message">Instruktion</div>
+<div id="message">När du trycker på knappen kommer det automatiskt tas två bilder med några sekunders mellanrum. Du kommer se de tagna bilderna, då trycker du på KLAR! Vill du ta om bilderna, tryck på Ta bilder igen. Men tryck alltid på KLAR!</div>
   <button id="startButton">Ta bilder 📷</button>
 
   <script>
@@ -37,7 +37,7 @@
     const message = document.getElementById("message");
 
     startButton.addEventListener("click", () => {
-      message.textContent = "📸 Bilderna tas nu...";
+      message.textContent = "📸 Bilderna kommer tas nu...var beredd";
       
       // Spara att vi har startat fotobåset
       sessionStorage.setItem("fotobasRunning", "true");
