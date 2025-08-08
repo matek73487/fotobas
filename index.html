@@ -1,60 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="sv">
 <head>
-  <meta charset="UTF-8">
-  <title>Starta Fotobås</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fotobås</title>
   <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
+    body {
       font-family: sans-serif;
-      background-color: #f8f8f8;
-    }
-
-    .container {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100%;
-      padding: 40px 20px;
-      text-align: center;
-    }
-
-    h1 {
-      font-size: 36px;
-      margin-bottom: 20px;
-    }
-
-    h2 {
-      font-size: 22px;
-      margin-bottom: 50px;
-      max-width: 600px;
-    }
-
-    button {
-      font-size: 36px;
-      padding: 30px 60px;
-      border-radius: 20px;
-      border: none;
-      background-color: #4CAF50;
+      background: black;
       color: white;
-      cursor: pointer;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      text-align: center;
+      padding-top: 100px;
     }
-
-    button:active {
-      background-color: #388E3C;
+    #message {
+      font-size: 2em;
+      margin-bottom: 50px;
+    }
+    #startButton {
+      font-size: 2em;
+      padding: 20px 40px;
+      background: white;
+      color: black;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Välkommen till Fotobåset!</h1>
-    <h2>När du trycker på knappen kommer kameran ta två bilder med några sekunders mellanrum. Därefter kommer bilderna visas och du trycker på KLAR! Vill du ta om bilderna, tryck ändå på KLAR och kör om igen.</h2>
-    <button onclick="window.location.href='shortcuts://run-shortcut?name=FOTOBÅS';">📸 Ta foton</button>
-  </div>
+  <div id="message">Tryck på knappen för att ta bilder</div>
+  <button id="startButton">Ta bilder 📷</button>
+
+  <script>
+    const startButton = document.getElementById("startButton");
+    const message = document.getElementById("message");
+
+    startButton.addEventListener("click", () => {
+      message.textContent = "📸 Bilderna tas nu...";
+      
+      // Här ska du lägga in din genvägs-URL nedan:
+      window.location.href = "shortcuts://run-shortcut?name=Fotsbås";
+    });
+  </script>
 </body>
 </html>
