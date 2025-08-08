@@ -10,11 +10,17 @@
       background: black;
       color: white;
       text-align: center;
-      padding-top: 100px;
+      padding-top: 80px;
+      transition: background-color 0.3s;
     }
     #message {
       font-size: 2em;
-      margin-bottom: 50px;
+      margin-bottom: 20px;
+    }
+    #instructions {
+      font-size: 1.2em;
+      margin-bottom: 40px;
+      color: #ccc;
     }
     #startButton {
       font-size: 2em;
@@ -29,26 +35,25 @@
 </head>
 <body>
   <div id="message">Tryck på knappen för att ta bilder</div>
-<div id="message">När du trycker på knappen kommer det automatiskt tas två bilder med några sekunders mellanrum. Du kommer se de tagna bilderna, då trycker du på KLAR! Vill du ta om bilderna, tryck på Ta bilder igen. Men tryck alltid på KLAR!</div>
+  <div id="instructions">Tryck <strong>inte</strong> på Avbryt när bilderna visas. Tryck alltid på Klar!</div>
   <button id="startButton">Ta bilder 📷</button>
 
   <script>
     const startButton = document.getElementById("startButton");
     const message = document.getElementById("message");
+    const instructions = document.getElementById("instructions");
 
     startButton.addEventListener("click", () => {
-      message.textContent = "📸 Bilderna kommer tas nu...var beredd";
-      
-      // Spara att vi har startat fotobåset
+      message.textContent = "📸 Bilderna kommer tas nu... var beredd!";
+      instructions.style.display = "none";
+      document.body.style.background = "#2E7D32"; // Grön bakgrund vid foto-läget
       sessionStorage.setItem("fotobasRunning", "true");
 
-      // Vänta lite innan vi öppnar genvägen så att texten hinner synas
       setTimeout(() => {
         window.location.href = "shortcuts://run-shortcut?name=Fotobås";
       }, 800);
     });
 
-    // Om vi kommer tillbaka från genvägen, ladda om sidan till startläge
     window.addEventListener("focus", () => {
       if (sessionStorage.getItem("fotobasRunning") === "true") {
         sessionStorage.removeItem("fotobasRunning");
